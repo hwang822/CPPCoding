@@ -1,3 +1,12 @@
+<<<<<<< HEAD
+#include <cppcoding.h>
+int main()
+{
+
+    cout << "Hello World!" << endl;
+    main10();
+    main12();
+=======
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -72,5 +81,6 @@ int main()
     vr = sol.twosum(vv, 9);
 
     cout << "Hello World!" << endl;
+>>>>>>> 537e3b2d8918ca6219196ebe0bfefb2b97c567eb
     return 0;
 }
