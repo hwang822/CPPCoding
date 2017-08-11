@@ -1,12 +1,9 @@
-<<<<<<< HEAD
-#include <cppcoding.h>
-int main()
-{
+#include <iostream>
 
-    cout << "Hello World!" << endl;
-    main10();
-    main12();
-=======
+using namespace std;
+
+
+#include <cppcoding.h>
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -74,6 +71,21 @@ public:
 
 int main()
 {
+    main01();
+    main02();
+    main03();
+    main04();
+    main05();
+    main06();
+    main07();
+    main08();
+    main09();
+    main10();
+    main11();
+    main12();
+
+
+
     vector<int> vv;
     vv ={2, 7, 11, 15};
     TwoUsm sol;
@@ -81,6 +93,6 @@ int main()
     vr = sol.twosum(vv, 9);
 
     cout << "Hello World!" << endl;
->>>>>>> 537e3b2d8918ca6219196ebe0bfefb2b97c567eb
     return 0;
 }
+
