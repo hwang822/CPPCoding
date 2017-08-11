@@ -4,11 +4,6 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += main.cpp \
-    chap4_Trees_and Graphs.cpp \
-    chap4_Trees_and Graphs.cpp \
-    chap04_Trees_and Graphs.cpp \
-    chap04_Trees_and Graphs.cpp \
-    chap04_Trees_and Graphs.cpp \
     main01_Array_and_Strings.cpp \
     main03_Stacks_and_Queues.cpp \
     main04_Trees_and_Graphs.cpp \

@@ -331,6 +331,42 @@ int search(string strings[], string str, int first, int last)
 //1o.7 Missing int
 
 
+//10.9 mxn array sorted at rows an cols, find elem
+
+#include <stdio.h>
+const int M = 3;
+const int N = 3;
+
+
+
+
+
+//*************************
+//10.1 Merage sorted A and Sorted B at A.
+
+
+//From C99, C language supports variable sized arrays to be passed simply by specifying the variable dimensions
+
+bool findFlement(int matrix[M][N], int elem){
+
+    int row = 0;
+    int cols = sizeof(matrix[0])/sizeof(int);
+    int rows = sizeof(matrix)/sizeof(int);
+    int col = cols -1;
+    while((row<rows)&&(col>=0)){
+        if(matrix[row][col]==elem){
+            return true;
+        } else if (matrix[row][col]>elem){ //first check if right bigger item of row > elem , no for next row
+            col--;
+        } else {
+            row++;
+        }
+    }
+
+
+    return false;
+}
+
 
 int main10(){
 

@@ -6,7 +6,7 @@
 
 //Given an array of integers, return indices of the two numbers such that they add up to a specific target.
 
-
+#include <vector>
 
 class TwoUsm {
 
@@ -46,5 +46,12 @@ public:
 
 int main01(){
 
+    // the iterator constructor can also be used to construct from arrays:
+    int myints[] = {16,2,77,29};
+    vector<int> nums (myints, myints + sizeof(myints) / sizeof(int) );
+
+//    vector<int> nums = new vector<int>(){1,2,3};
+    TwoUsm tm;
+    vector<int> ret =  tm.twosum(nums, 17);
     return 0;
 }

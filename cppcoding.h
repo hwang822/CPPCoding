@@ -6,6 +6,27 @@
 #include <string.h>
 
 using namespace std;
+
+struct TreeNode{
+    int iItem;
+    string sItem;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode(string str){
+        sItem = str;
+        left = NULL;
+        right = NULL;
+    }
+    TreeNode(int i){
+        iItem = i;
+        left = NULL;
+        right = NULL;
+    }
+
+};
+
+
+
 int main01();
 int main02();
 int main03();
