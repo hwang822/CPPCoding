@@ -71,18 +71,18 @@ public:
 
 int main()
 {
-    main01();
-    main02();
-    main03();
-    main04();
+//    main01();
+//    main02();
+//    main03();
+//    main04();
     main05();
-    main06();
-    main07();
-    main08();
-    main09();
-    main10();
-    main11();
-    main12();
+//    main06();
+//    main07();
+//    main08();
+//    main09();
+//    main10();
+//    main11();
+//    main12();
 
 
 

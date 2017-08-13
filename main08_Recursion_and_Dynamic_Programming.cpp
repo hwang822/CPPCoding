@@ -14,9 +14,23 @@ int countWays(int n){
     }
 }
 
+//8.5 Recursive multiplies of two unsigned value without using *.
 
+int multiplies1(int x){
+    int y = 0;
+    if(y==0)
+        return 0;
+    else if(y==1)
+        return x;
+    else {
+        return x; // + multiplies1(x, y-1);
+    };
+}
 
 int main08(){
 
-    return 0;
+    countWays(10);
+    int n = 4;
+    multiplies1(n);
+    return 0;    
 }

@@ -83,8 +83,84 @@ double getValue(TreeNode *node){
 }
 
 
+//4.1 Route Between Nodes
+
+
+bool search(TreeNode *start, TreeNode *end){
+
+    if((start==NULL)||(end==NULL))
+        return false;
+    if(start==end)
+    {
+        cout << "connected!" << endl;
+        return true;
+    }
+    if(search(start, start->left))
+        return false;
+    if(search(start, start->right))
+        return false;
+}
+
+//4.2 Minimal Tree:
+//TreeNode* createMinmalBST(int array[]){
+//    return createMinmalBST(array, 0, sizeof(array)/sizeof(array[0])-1);}
+
+TreeNode* createMinmalBST(int arr[], int start, int end){
+    if(end < start){
+        return NULL;
+    }
+
+    int mid = (start+end)/2;
+    TreeNode *n = new TreeNode(arr[mid]);
+    n->left = createMinmalBST(arr, start, mid-1);
+    n->right = createMinmalBST(arr, mid+1, end);
+}
+
+//4.3 List of Depths: Given a binary tree, design an algorithm which creates a linked list of all the ndoes at each depth.
+
+//4.4 Check Balanced:
+#include <math.h>;
+
+int getHeight(TreeNode *root){
+    if(root == NULL) return -1;
+    return max(getHeight(root->left), getHeight(root->right))+1;
+}
+
+bool isBlanced(TreeNode *root){
+    if(root == NULL) return true;
+
+    int heightDiff = abs(getHeight(root->left) - getHeight(root->right));
+    if(heightDiff>1)
+        return false;
+    else
+        return isBlanced(root->left) && isBlanced(root->right);
+}
+
+
+//4.5 Vaildate BST: Implement a fucntion to check if a binary three is binary search tree
+//bool checkBST(TreeNode *n){
+//    return checkBST(n, -1, -1);
+//}
+
+bool checkBST(TreeNode *n, int min, int max){
+    if(n==NULL)
+        return true;
+
+    if((min!=-1)&&(n->iItem<=min)||(max!=-1)&&(n->iItem>=max))
+        return false;
+    if(!checkBST(n->left, min, n->iItem)||!checkBST(n->right, n->iItem, max))
+        return true;
+}
+
+
+
 
 int main04(){
+
+    int array[] = {1,4,7,8,9,10,23,45};
+
+//    TreeNode* node = createMinmalBST(array);
+
 
     return 0;
 }

@@ -7,8 +7,11 @@
 
 using namespace std;
 
+enum State { Univisited, Visited, Visting};
+
 struct TreeNode{
     int iItem;
+    State state;
     string sItem;
     TreeNode *left;
     TreeNode *right;
