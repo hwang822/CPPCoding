@@ -42,4 +42,5 @@ int main09();
 int main10();
 int main11();
 int main12();
+int mainleetcode();
 #endif // CPPCODING_H

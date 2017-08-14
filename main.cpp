@@ -71,11 +71,12 @@ public:
 
 int main()
 {
+    mainleetcode();
 //    main01();
 //    main02();
 //    main03();
 //    main04();
-    main05();
+//    main05();
 //    main06();
 //    main07();
 //    main08();

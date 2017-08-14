@@ -15,7 +15,8 @@ SOURCES += main.cpp \
     main10_Sorting_and_Searching.cpp \
     main11_Testing.cpp \
     main12_C_and_Cpp.cpp \
-    main02_Linked_List.cpp
+    main02_Linked_List.cpp \
+    main_leetcode.cpp
 
 HEADERS += \
     cppcoding.h
