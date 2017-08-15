@@ -26,6 +26,8 @@ bool RoadMap(bool map[M][N], int M, int N, int m, int n){
         map[m][n]=true;
     }
 
+    //this way need travel only one path with tree branchs
+
     bool found = false;
     if(m<M-1)
         found = RoadMap(map, M, N, m+1, n);
@@ -413,7 +415,7 @@ int FindMinimumDepthOfABinaryTree(Node *root){
     if(root==NULL)
         return 0;
 
-    if(!(root->left) && (!root->right))
+    if((!root->left) && (!root->right))
         return 1;
 
     if(!root->left)
@@ -421,13 +423,146 @@ int FindMinimumDepthOfABinaryTree(Node *root){
 
     if(!root->right)
         return FindMinimumDepthOfABinaryTree(root->left) + 1;
-
+//this way need travel all tree branch
     return min(FindMinimumDepthOfABinaryTree(root->left),
                FindMinimumDepthOfABinaryTree(root->right)) + 1;
 
 }
 
+//13. Find if string is K-Palindrome or not
+
+bool isKPal(string str, int k){
+    int n = str.length();
+    string revstr = str;
+    reverse(revstr.begin(), revstr.end());
+    string left =  "";
+    string right = "";
+
+    int mid = n/2;
+
+    left = str.substr(0, mid);
+    right = revstr.substr(0, mid);
+
+    while(mid>0)
+    {
+        if(left==right)
+            return true;
+        else
+            if(k>0)
+               k--;
+            else
+               return true;
+        mid--;
+        left = left.substr(0,mid);
+        right = right.substr(0,mid);
+
+    }
+    return false;
+}
+
+//14 Multiply Large Numbers represented as Strings
+string MultiplyLargeNumbersRepresentedAsStrings(string num1, string num2){
+
+    // Multiplies str1 and str2, and prints result.
+    int n1 = num1.size();
+    int n2 = num2.size();
+    if (n1 == 0 || n2 == 0)
+       return "0";
+
+    // will keep the result number in vector
+    // in reverse order
+    vector<int> result(n1 + n2, 0);
+
+    // Below two indexes are used to find positions
+    // in result.
+    int i_n1 = 0;
+    int i_n2 = 0;
+
+    // Go from right to left in num1
+    for (int i=n1-1; i>=0; i--)
+    {
+        int carry = 0;
+        int n1 = num1[i] - '0';
+
+        // To shift position to left after every
+        // multiplication of a digit in num2
+        i_n2 = 0;
+
+        // Go from right to left in num2
+        for (int j=n2-1; j>=0; j--)
+        {
+            // Take current digit of second number
+            int n2 = num2[j] - '0';
+
+            // Multiply with current digit of first number
+            // and add result to previously stored result
+            // at current position.
+            int sum = n1*n2 + result[i_n1 + i_n2] + carry;
+
+            // Carry for next iteration
+            carry = sum/10;
+
+            // Store result
+            result[i_n1 + i_n2] = sum % 10;
+
+            i_n2++;
+        }
+
+        // store carry in next cell
+        if (carry > 0)
+            result[i_n1 + i_n2] += carry;
+
+        // To shift position to left after every
+        // multiplication of a digit in num1.
+        i_n1++;
+    }
+
+    // ignore '0's from the right
+    int i = result.size() - 1;
+    while (i>=0 && result[i] == 0)
+       i--;
+
+    // If all were '0's - means either both or
+    // one of num1 or num2 were '0'
+    if (i == -1)
+       return "0";
+
+    // generate the result string
+    string s = "";
+    while (i >= 0)
+        s += std::to_string(result[i--]);
+
+    return s;
+
+
+/*
+    int num1 = stoi(str1);
+    int length = str2.length();
+    int seed = 1;
+    int resut = 0;
+    for(int i=0; i<length; i++){
+        int mult = (int)str2.at(length-i-1) - '0';
+        resut = resut + num1 * seed*mult;
+        seed = seed*10;
+
+    }
+*/
+}
+
 int mainfacebook(){
+
+    string str1 = "1235421415454545454545454544";
+    string str2 = "1714546546546545454544548544544545";
+    //string str1 = "123";
+    //string str2 = "45";
+
+
+    cout << MultiplyLargeNumbersRepresentedAsStrings(str1, str2);
+
+    cout << isKPal("abcdecba", 1) << endl;
+    cout << isKPal("abcdeca", 2) << endl;
+    cout << isKPal("acdcb", 1) << endl;
+
     bool map[M][N] = {{false,false,false,false,false},{false,false,false,false,false},
                       {false,false,false,false,false},{false,false,false,false,false}};
     map[3][0] = true;
