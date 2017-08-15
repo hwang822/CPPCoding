@@ -1,5 +1,41 @@
 #include <cppcoding.h>
 
+// move from (0,0) to (M,N) node with some balcked nodes.
+
+const int M = 4;
+const int N = 5;
+bool RoadMap(bool map[M][N], int M, int N, int m, int n){
+
+    if((m>=M)||(n>=N)){
+        cout << "(" << m << "," << n << ") out of range." << endl;
+        return false;
+    }
+
+    if ((m==M-1)&&(n==N-1)) {
+        cout << "(" << m << "," << n << ") ended" << endl;
+        return true;
+    }
+
+    if(map[m][n]==true){
+        cout << "(" << m << "," << n << ") visted or blacked" << endl;
+        return false;
+    }
+    else
+    {
+        cout << "(" << m << "," << n << ") visted" << endl;
+        map[m][n]=true;
+    }
+
+    bool found = false;
+    if(m<M-1)
+        found = RoadMap(map, M, N, m+1, n);
+    if(!found){
+        if(n<N-1)
+            found = RoadMap(map, M, N, m, n+1);
+    }
+    return found;
+}
+
 //283. Move Zeroes
 int* MoveZeroes(int nmus[], int size){
     int iIndex = 0;        
@@ -59,7 +95,7 @@ Output:
 //   |            v
 // (N-1-y,x) <-- (N-1-y, N-1-x)
 
-const int N = 4;
+//const int N = 4;
 
 void displayMatrix(int mat[N][N])
 {
@@ -392,7 +428,10 @@ int FindMinimumDepthOfABinaryTree(Node *root){
 }
 
 int mainfacebook(){
-
+    bool map[M][N] = {{false,false,false,false,false},{false,false,false,false,false},
+                      {false,false,false,false,false},{false,false,false,false,false}};
+    map[3][0] = true;
+    RoadMap(map, 4, 5, 0, 0);
   //  Node *root
     Node *root = new Node(0);
     root->left  = new Node(1);
