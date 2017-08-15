@@ -287,14 +287,136 @@ int SmallestSubarrayWithSumGreaterThanAGivenValue(int nums[], int n){
     return smallest;
 }
 
+//7. Greedy Algorithms
+
+//8. Find Subarray with given sum
+
+int FindSubarrayWithGivenSum(int nums[], int size, int n){
+    int curr = 0;
+    for(int i=0; i<size; i++){
+        curr = nums[i];
+        for(int j=i+1; j<size; j++){
+            if(curr==n){
+                printf("find item equal sum at %d and %d", i, j);
+                return 1;
+            }
+            if((curr > n) || (j == size))
+                break; //no more forward
+            curr = curr + nums[j];
+
+        }
+    }
+    printf("No subarry found");
+    return 0;
+}
+
+//9 Convert Ternary Expression to a Binary Tree
+struct Node{
+    string item;
+    Node *left;
+    Node *right;
+    Node(char data){
+        item = data;
+        left = NULL;
+        right = NULL;};
+};
+
+void printTree(Node *root){
+    if(!root)
+        return;
+
+    cout<<root->item<<" ";
+    printTree(root->left);
+    printTree(root->right);
+
+}
+
+
+Node* ConvertTernaryExpressionToABinaryTree(string TExpr, int i)
+{
+    if(i>=TExpr.length())
+        return NULL;
+
+    Node* root = new Node(TExpr.at(i));
+    i++;
+
+    if((i<TExpr.length())&&(TExpr.at(i)=='?'))
+        root->left = ConvertTernaryExpressionToABinaryTree(TExpr, i+1);
+    else if (i<TExpr.length())
+        root->right = ConvertTernaryExpressionToABinaryTree(TExpr, i+1);
+    return root;
+}
+
+//10 Find All Triplets with zero sum
+
+void FindAllTripletsWithZeroSum(int nums[], int size){
+    for(int i=0; i<size; i++){
+        for(int j=i+1; j<size; j++){
+            for(int k=j+1; k<size; k++){
+                if(nums[i] + nums[j] + nums[k]==0)
+                    printf("sum zeor at %i, %i, %i\n", nums[i], nums[j], nums[k]);
+            }
+        }
+    }
+}
+
+//11 Converting Decimal Number Lying Between 1 to 3999 to Roman Numberals
+
+//12. Find Minimum Depth of a Binary Tree
+#include<bits/stdc++.h>
+/*
+struct NODE{
+    int data;
+    NODE *left;
+    NODE *right;
+};
+*/
+
+int FindMinimumDepthOfABinaryTree(Node *root){
+
+    if(root==NULL)
+        return 0;
+
+    if(!(root->left) && (!root->right))
+        return 1;
+
+    if(!root->left)
+        return FindMinimumDepthOfABinaryTree(root->right) + 1;
+
+    if(!root->right)
+        return FindMinimumDepthOfABinaryTree(root->left) + 1;
+
+    return min(FindMinimumDepthOfABinaryTree(root->left),
+               FindMinimumDepthOfABinaryTree(root->right)) + 1;
+
+}
+
 int mainfacebook(){
+
+  //  Node *root
+    Node *root = new Node(0);
+    root->left  = new Node(1);
+    root->right = new Node(3);
+    root->left->left  = new Node(4);
+    root->left->right  = new Node(5);
+    cout << "min tree depth = " << FindMinimumDepthOfABinaryTree(root) <<endl;
+
+    int arr1[] = {0, -1, 2, -3, 1};
+    FindAllTripletsWithZeroSum(arr1, sizeof(arr1)/sizeof(arr1[0]));
+
+    string expression = "a?b?c:d:e";
+    root = ConvertTernaryExpressionToABinaryTree(expression, 0);
+    printTree(root);
+
+
+    printTree(root);
+    int arrs[] = {15, 2, 4, 8, 9, 5, 10, 23};
+
+    FindSubarrayWithGivenSum(arrs, sizeof(arrs)/sizeof(arrs[0]), 23);
 
     string str ="MCMIV";
     cout << "Integer form of Roman Numeral is "
          << romanToDecimal(str) << endl;
-
-
-
     printf(" gerenatd %s \n", Look_and_Say_Sequence(5));
 
     int bar[] = {6, 2, 5, 4, 5, 1, 6};
