@@ -9,8 +9,8 @@ int main()
 {
     mainfacebook();
 
-    mainleetcode();
-//    main01();
+//    mainleetcode();
+    main01();
 //    main02();
 //    main03();
 //    main04();

@@ -534,22 +534,141 @@ string MultiplyLargeNumbersRepresentedAsStrings(string num1, string num2){
 
     return s;
 
-
-/*
-    int num1 = stoi(str1);
-    int length = str2.length();
-    int seed = 1;
-    int resut = 0;
-    for(int i=0; i<length; i++){
-        int mult = (int)str2.at(length-i-1) - '0';
-        resut = resut + num1 * seed*mult;
-        seed = seed*10;
-
-    }
-*/
 }
 
+//14 Median in a stream of intergers (running intergers)
+
+#include <algorithm>    // std::make_heap, std::pop_heap, std::push_heap, std::sort_heap
+#include <vector>       // std::vector
+
+int MedianInAStreamOfIntergers(int nums[], int size){
+
+    //sort number {5, 15, 1, 3, 2, 8, 7, 9, 10,  6, 11, 4}
+    //            {1, 2,  3, 4, 5, 6, 7, 8,  9, 10, 11, 15} => (6+7)/2 = 6
+
+    // push data nums heap to make the data sorted queue
+    vector<int> v(nums,nums+size);
+    make_heap (v.begin(),v.end());
+    cout << "initial max heap   : " << v.front() << '\n';
+
+    if(size%2)
+        return(size/2+1);
+    else
+        return ((nums[size/2]+nums[size/2-1])/2);
+    for (unsigned i=0; i<v.size(); i++)
+      cout << ' ' << v[i];
+    cout << '\n';
+
+
+}
+
+//15 Boggle
+const int N1 = 3;
+bool Boggle(char boggle[N1][N1], char *dictionary[], int size){
+
+    bool visted[3][3];
+
+    for(int i = 0; i<size; i++){
+        string sDir = dictionary[i];
+        bool found = false;
+        for(int j=0; j<sDir.length();j++){
+            char chr = sDir[j];
+            found = false;
+            memset(visted, false, sizeof(bool)*N1*N1);
+            for(int k = 0; k<N1; k++){
+                for(int l = 0; l<N1; l++){
+                    if((boggle[k][l]==chr)&&(visted[k][l]==false)){
+                        visted[k][l] = true;
+                        found = true;
+                        break;
+                    }
+                }
+                if(found == true)
+                    break;
+            }
+            if(found == false)
+               break;
+        }
+        if(found == true)
+            cout << sDir << " found in boggle." << endl;
+
+    }
+
+}
+
+//16 Count Possible Decodings of a given Digit Sequence.
+int countDecoding(char *digits, int n){
+    if(n==0 ||n==1)
+        return 1;
+    int count = 0;
+    if(digits[n-1] > '0')
+        count = countDecoding(digits,n-1);
+    if(digits[n-2] == '1'|| (digits[n-2]=='2' && digits[n-1] < '7' ))
+        count += countDecoding(digits, n-2);
+    return count;
+}
+
+// 17 Check The sum of 2 elements in an array equal to X
+// first make array to hash table to make the data softed for small to big.
+
+bool findSum(int B[], int X, int n){
+    int i = 0;
+    int j = n-1;
+
+    while(i<j){
+        int x = B[i] + B[j];
+        if(x == X)
+            return true;
+        if(x > X )
+            j--;
+        if(x < X)
+            i++;
+
+    }
+    return false;
+
+
+}
+
+// 18 find [0,1] string maximum value uing + or *.
+// "012340" => (0 + 1 + 2)*3*(4+0) = 35
+int calcMaxValue(string str){
+    int res = str[0] - '0';
+    for(int i=1; i<str.length();i++){
+        if((str[i]=='0') || (str[i]=='1') || (str[i-1]=='0') || (str[i-1]=='1'))
+            res += str[i] - '0';
+        else
+            res *= str[i] - '0';
+    }
+    return res;
+}
+
+
 int mainfacebook(){
+    string str3 = "012340";
+    cout << "Max number of " + str3 << " is " << calcMaxValue(str3) << endl;
+
+    int A1[] = {1, 5, 4, 4, 3, 8};
+
+    findSum(A1, 8, 6);
+
+    char digits[] = "1234";
+    int n2 = strlen(digits);
+    cout << " count is " << countDecoding(digits, n2) << endl;
+
+    char *dictionary[] = {"GEEKS", "FOR", "QUIZ", "GEE"};
+    int size1 = 4;
+
+    char boggle[N1][N1]   = {{'G','I','Z'},
+                    {'U','E','K'},
+                    {'Q','S','E'}};
+
+    Boggle(boggle, dictionary, size1);
+
+    int A[] = {5, 15, 1, 3, 2, 8, 7, 9, 10, 6, 11, 4};
+    int size = sizeof(A)/sizeof(A[0]);
+
+    cout << "Mdeian = " << MedianInAStreamOfIntergers(A, size) << endl;
 
     string str1 = "1235421415454545454545454544";
     string str2 = "1714546546546545454544548544544545";

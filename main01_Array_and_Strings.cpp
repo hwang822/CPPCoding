@@ -17,6 +17,7 @@ public:
             if(nums[i]+nums[i+1]==target){
                 rets.push_back(i);
                 rets.push_back(i+1);
+
                 return rets;            }
         }
     }
@@ -28,6 +29,10 @@ bool isUniqueChars(string str){
     if(str.length()>128) return false;
     bool *char_set = new bool[128];
     memset(char_set, false, 128);
+
+    char chr = str[0];
+    int ichr = str[0];
+
 
     for(int i = 0; i < str.length(); i++){
         int var = str.at(i);

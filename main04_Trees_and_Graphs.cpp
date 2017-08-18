@@ -5,6 +5,7 @@
 
 int countNodes(TreeNode *root){
 
+
     if(root == NULL)
         return 0;
 
@@ -105,15 +106,31 @@ bool search(TreeNode *start, TreeNode *end){
 //TreeNode* createMinmalBST(int array[]){
 //    return createMinmalBST(array, 0, sizeof(array)/sizeof(array[0])-1);}
 
-TreeNode* createMinmalBST(int arr[], int start, int end){
+TreeNode* createMinmalBSTFromUusortedArray(int arr[], int start, int end){
     if(end < start){
         return NULL;
     }
 
     int mid = (start+end)/2;
     TreeNode *n = new TreeNode(arr[mid]);
-    n->left = createMinmalBST(arr, start, mid-1);
-    n->right = createMinmalBST(arr, mid+1, end);
+    if(arr[mid-1]<=arr[mid])
+        n->left = createMinmalBSTFromUusortedArray(arr, start, mid-1);
+    else
+        n->right = createMinmalBSTFromUusortedArray(arr, mid+1, end);
+
+}
+
+
+TreeNode* createMinmalBSTFromSortedArray(int arr[], int start, int end){
+    if(end < start){
+        return NULL;
+    }
+
+    int mid = (start+end)/2;
+    TreeNode *n = new TreeNode(arr[mid]);
+    cout << arr[mid] << " " << endl;
+    n->left = createMinmalBSTFromSortedArray(arr, start, mid-1);
+    n->right = createMinmalBSTFromSortedArray(arr, mid+1, end);
 }
 
 //4.3 List of Depths: Given a binary tree, design an algorithm which creates a linked list of all the ndoes at each depth.
@@ -158,9 +175,10 @@ bool checkBST(TreeNode *n, int min, int max){
 int main04(){
 
     int array[] = {1,4,7,8,9,10,23,45};
+    int size5 = sizeof(array)/sizeof(array[0]);
+    TreeNode* node = createMinmalBSTFromSortedArray(array, 0, size5-1);
 
-//    TreeNode* node = createMinmalBST(array);
-
+    //createMinmalBSTFromUusortedArray
 
     return 0;
 }
