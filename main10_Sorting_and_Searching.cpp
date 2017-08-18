@@ -104,7 +104,7 @@ int binarySearch(int a[], int x){
 
 
 
-int binarySearchRescursive(int a[], int x, int low, int high){
+int binarySearchRescursive1(int a[], int x, int low, int high){
 
     if(low > high) return -1;
 
@@ -114,11 +114,11 @@ int binarySearchRescursive(int a[], int x, int low, int high){
 
     if (a[mid] < x){
 
-        return binarySearchRescursive(a, x, mid+1, high);
+        return binarySearchRescursive1(a, x, mid+1, high);
 
     } else if ( a[mid] > x ){
 
-        return binarySearchRescursive(a, x, low, mid-1);
+        return binarySearchRescursive1(a, x, low, mid-1);
 
     } else {
 

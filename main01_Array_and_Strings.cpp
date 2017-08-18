@@ -25,7 +25,8 @@ public:
 
 //1.1 Is Unique
 
-bool isUniqueChars(string str){
+bool isUniqueChars1(string str){
+/*
     if(str.length()>128) return false;
     bool *char_set = new bool[128];
     memset(char_set, false, 128);
@@ -40,6 +41,7 @@ bool isUniqueChars(string str){
             return false;
         char_set[var] = true;
     }
+*/
     return true;
 }
 
@@ -122,7 +124,7 @@ int main01(){
 //    replaceSpaces("h  en ry        ", 8);
     cout << permutation("henry", "yrneh");
 
-    bool ret = isUniqueChars("henrywang");
+    bool ret = isUniqueChars1("henrywang");
     // the iterator constructor can also be used to construct from arrays:
     int myints[] = {16,2,77,29};
     vector<int> nums (myints, myints + sizeof(myints) / sizeof(int) );
