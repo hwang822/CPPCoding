@@ -1,4 +1,43 @@
 #include <cppcoding.h>
+#include <unordered_set>
+// Facebook remote interviewer by zhouhui at 8/18/2017, 12PM CTS.
+// 1. create inorder travel in a given binary tree.
+// 2. create function to TreeNode* = getNextNode(TreeNode* root)
+
+#include <vector>>
+class FBInterViewTest{
+
+    vector<TreeNode*> tree;
+    int point;
+public:
+    FBInterViewTest(){
+        point = 0;
+    }
+    void InorderTravelTree(TreeNode* node){
+
+        if (node == NULL)
+            return;
+        /* first recur on left child */
+        InorderTravelTree(node->left);
+        /* then print the data of node */
+        printf("%d ", node->sItem);
+        tree.push_back(node);
+        /* now recur on right child */
+        InorderTravelTree(node->right);
+    }
+
+    TreeNode* getNextNode(){
+        if(point==tree.size())
+            return NULL;
+        else {
+            return tree.at(point++);
+        }
+    }
+};
+
+
+
+
 
 // move from (0,0) to (M,N) node with some balcked nodes.
 
