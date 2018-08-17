@@ -55,6 +55,6 @@ int main10();
 int main11();
 int main12();
 int mainleetcode();
-int mainfacebook();
+int mainFacebook();
 int mainAmazon();
 #endif // CPPCODING_H

@@ -140,6 +140,7 @@ void findFibSubset1(int arr[], int n){
 int main()
 {
     mainAmazon();
+	mainFacebook();
 
 //    mainleetcode();
 //    main01();
