@@ -1,9 +1,9 @@
+#include "stdafx.h"
 #include <iostream>
 
 using namespace std;
 
-
-#include <cppcoding.h>
+#include "cppcoding.h"
 #include <vector>>
 #include <unordered_map>
 #include <unordered_set>
@@ -139,10 +139,10 @@ void findFibSubset1(int arr[], int n){
 
 int main()
 {
-    mainfacebook();
+    mainAmazon();
 
 //    mainleetcode();
-    main01();
+//    main01();
 //    main02();
 //    main03();
 //    main04();
