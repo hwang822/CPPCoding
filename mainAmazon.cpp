@@ -56,7 +56,7 @@ After travelsal we will have following map
 		  2						6
 */
 
-void VerticalSumbofBinaryTree(Node *root, int key, map<int, int> &m)
+void VerticalSumofBinaryTree(Node *root, int key, map<int, int> &m)
 {
    if ( root != NULL ){  // (Otherwise, there's nothing to print.)
 	  cout << root->key << "("<< key << ")" << " ";	  
@@ -65,8 +65,8 @@ void VerticalSumbofBinaryTree(Node *root, int key, map<int, int> &m)
 		  m[key] = m[key] + root->key;
 	  else
 		  m.insert(pair<char,int>(key, root->key));
-  	  VerticalSumbofBinaryTree( root->left, key-1, m);    // Print items in left subtree.	  
-      VerticalSumbofBinaryTree( root->right, key+1, m);   // Print items in right subtree.
+  	  VerticalSumofBinaryTree( root->left, key-1, m);    // Print items in left subtree.	  
+      VerticalSumofBinaryTree( root->right, key+1, m);   // Print items in right subtree.
    }
 
 }
@@ -109,6 +109,9 @@ void FindBinaryTreeMaximumWidth(Node *root, int key, std::map<int, int> &m)
  */
 int mainAmazon()
 {
+	//#1
+	cout<< "\nAmazton Interview Test\n";
+	cout << "\n#1 VerticalSumofBinaryTree:\n";
 	map<int, int> m;
 
 	Node *n = new Node(1);
@@ -120,7 +123,7 @@ int mainAmazon()
 	n->right->right = new Node(6);
     
 	
-	VerticalSumbofBinaryTree(n, 0, m);
+	VerticalSumofBinaryTree(n, 0, m);
 	cout <<"\n";
 	int max  = 0;
 	for(auto elem : m)
@@ -131,6 +134,7 @@ int mainAmazon()
 	}
 	cout << "MixSum: " << " " << max << "\n";
 
+	cout << "\n#2 FindBinaryTreeMaximumWidth:\n";
 	m.clear();
 	FindBinaryTreeMaximumWidth(n, 0, m);
 	cout <<"\n";
@@ -142,8 +146,6 @@ int mainAmazon()
 	    cout << elem.first << " " << elem.second << "\n";
 	}
 	cout << "Mixwidth: " << " " << max << "\n";
-	int choice;
-	cin>>choice;
 	return 0;
 }
 
