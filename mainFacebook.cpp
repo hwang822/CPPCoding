@@ -8,6 +8,8 @@
 #include <vector>       // std::vector
 #include <string>
 
+//source GeeksForgeeks
+//https://www.geeksforgeeks.org/count-possible-decodings-given-digit-sequence/
 
 //Tree
 
@@ -29,6 +31,32 @@
 //         2       3
 //        / \
 //      4    5
+
+class FindNextNodeatBT{
+	int point;
+	vector<Node *> path;
+public:
+	FindNextNodeatBT()
+	{
+		point = 0;
+	}
+
+	void CreateInorderTavel(Node *root)
+	{
+		if(root==NULL)
+			return;		
+		CreateInorderTavel(root->left);
+		path.push_back(root);
+		CreateInorderTavel(root->right);
+		return;
+	}
+	Node* GetNextNode()
+	{
+		if(point>=path.size())
+			point = 0;
+		return path.at(point++);
+	}
+};
 
 class FBInterViewTest{
 private:
@@ -64,6 +92,16 @@ public:
 };
 
 //2. Find Minimum Depth of a Binary Tree
+int FindMinimumDepthOfABinaryTree1(Node *root){
+	if((root->right==NULL)&&(root->left==NULL))
+		return 1;
+	if(root->right==NULL)
+		return FindMinimumDepthOfABinaryTree1(root->left)+1;
+	if(root->left==NULL)
+		return FindMinimumDepthOfABinaryTree1(root->right)+1;
+	return min(FindMinimumDepthOfABinaryTree1(root->left),
+		FindMinimumDepthOfABinaryTree1(root->right))+1;
+}
 
 int FindMinimumDepthOfABinaryTree(Node *root){
 
@@ -688,8 +726,57 @@ string Look_and_Say_Sequence(int n){
 
 
 //#18. Find if string is K-Palindrome or not
+/*
+Input : String - abcdecba, k = 1
+Output : Yes
+String can become palindrome by remo-
+-ving 1 character i.e. either d or e)
+
+
+Input  : String - abcdeca, K = 2
+Output : Yes
+Can become palindrome by removing
+2 characters b and e.
+
+Input : String - acdcb, K = 1
+Output : No
+String can not become palindrome by
+removing only one character.
+*/
+
+bool isKPal1(string str, int k){
+	string revstr = str;
+	int mid = str.length()/2;
+	string left = "";
+	string right = "";
+	reverse(revstr.begin(), revstr.end());
+	left = str.substr(0, mid);
+	right = revstr.substr(0, mid);
+	while(mid>0)
+	{
+		if(left==right)
+			return true;
+		else if (k>0)
+		{
+			k--;
+		}
+		else
+		{
+			return true;
+		}
+		mid--;
+		left = left.substr(0, mid);
+		right = right.substr(0, mid);
+
+	}
+
+
+	return false;
+}
+
 
 bool isKPal(string str, int k){
+	isKPal1(str, k);
     int n = str.length();
     string revstr = str;
     reverse(revstr.begin(), revstr.end());
@@ -719,8 +806,88 @@ bool isKPal(string str, int k){
 }
 
 //#19 Multiply Large Numbers represented as Strings
-string MultiplyLargeNumbersRepresentedAsStrings(string num1, string num2){
+/*
+Input : num1 = 4154  
+        num2 = 51454
+Output : 213739916 
 
+Input :  num1 = 654154154151454545415415454  
+         num2 = 63516561563156316545145146514654 
+Output : 41549622603955309777243716069997997007620439937711509062916
+string MultiplyLargeNumbersRepresentedAsStrings1(string num1, string num2){
+	//coded by mysefl
+	
+			4154
+         x 51454
+		----------
+		  4154x4
+        4154x50
+	  4154x400
+    4154x1000
++ 4154x50000
+-----------------
+
+
+
+*/
+
+string MultiplyLargeNumbersRepresentedAsStrings1(string num1, string num2){
+
+
+	
+	
+	string strres = "";
+	int num2size = num2.size();
+	int num1size = num1.size();
+	int resultsize = num1size+num2size;
+
+    if (resultsize == 0)
+       return "0";
+	char *result = new char[resultsize];
+	memset(result,'0',resultsize);
+	int num = 1;
+	int index = resultsize-1;
+	int adj = 0;
+	for(int i = num2size-1; i>=0; i--)
+	{		
+		index = resultsize-1 - adj;
+		int mutip = num2[i]-'0';
+		int carry = 0;		
+		for(int j = num1size-1; j>=0; j--)
+	    {			
+			int premutip = num1[j]-'0';
+			int res = premutip*mutip;			
+			
+			res = res + carry;
+
+			if(res>10)
+			{
+				carry = res/10;			
+				res = res-carry*10;
+			}
+			else
+				carry = 0;
+			int addon = res + (result[index]-'0');
+			int addcarry  = 0;
+			addcarry = addon/10;
+			addon = addon - addcarry*10;
+			result[index] = char(addon+'0');
+			addcarry = addcarry + (result[index-1]-'0');
+			result[index-1] = char(addcarry + '0');
+			index--;
+		}
+		result[index] = char(carry + '0');
+		adj++;
+	}
+	strres = string(result).substr(0,num2size+num1size);
+	if(strres.at(0)=='0')
+		strres.replace(0,1,"");
+	
+	
+	return strres;
+}
+
+string MultiplyLargeNumbersRepresentedAsStrings(string num1, string num2){
     // Multiplies str1 and str2, and prints result.
     int n1 = num1.size();
     int n2 = num2.size();
@@ -794,10 +961,53 @@ string MultiplyLargeNumbersRepresentedAsStrings(string num1, string num2){
 
 }
 
-
 //#20 Boggle
+
+/*
+Find all possible words that can be formed by a sequence of adjacent characters
+Input: dictionary[] = {"GEEKS", "FOR", "QUIZ", "GO"};
+       boggle[][]   = {{'G','I','Z'},
+                       {'U','E','K'},
+                       {'Q','S','E'}};
+
+Output:  Following words of dictionary are present
+         GEEKS
+         QUIZ
+*/
+
 const int N1 = 3;
+
+bool Boggle1(char boggle1[N1][N1], char *dictionary[], int size){
+	unordered_set<char> chars;  //Code by my self
+
+	for(int i= 0; i<N1;i++)
+		for(int j= 0; j<N1;j++)
+		{
+			chars.insert(boggle1[i][j]);
+		}
+
+	for(int i = 0; i<size; i++)
+	{		
+		bool nofound = false;
+		string name = dictionary[i];
+		for(int j=0; j<name.size(); j++)
+		{
+			char chr = name[j];
+			if(chars.find(chr)==chars.end())
+			{
+				nofound = true;
+				break;
+			}
+		}
+		if(nofound==false)
+			cout<<name<<endl;
+
+	}
+    return true;
+}
+
 bool Boggle(char boggle[N1][N1], char *dictionary[], int size){
+	Boggle1(boggle, dictionary, size);
 
     bool visted[3][3];
 
@@ -829,6 +1039,7 @@ bool Boggle(char boggle[N1][N1], char *dictionary[], int size){
     return true;
 }
 
+
 //#21 Count Possible Decodings of a given Digit Sequence.
 int countDecoding(char *digits, int n){
     if(n==0 ||n==1)
@@ -841,15 +1052,32 @@ int countDecoding(char *digits, int n){
     return count;
 }
 
+int countDecoding1(char *digits, int n){
+	//"1234"  1-26 for A-Z  design by myself
+	int count = 0;
+	for(int index = 0; index<n-1; index++)
+	{
+		int data = (digits[index]-'0')*10 + (digits[index+1]-'0');
+		if((data<=26)&&(data>=1))
+		{
+			count++;
+		}
+	}
+	if(n>=0)
+		count++;
+	return count;
+}
 
-// 22 find [0,1] string maximum value uing + or *.
+
+//#22 find [0,1] string maximum value uing + or *.
 // "012340" => (0 + 1 + 2)*3*(4+0) = 36
 int calcMaxValue(string str){
+
     int res = str[0] - '0';
     for(int i=1; i<str.length();i++){
         if((str[i]=='0') || (str[i]=='1') || (str[i-1]=='0') || (str[i-1]=='1'))
             res += str[i] - '0';  // if string begin or end with 0 or 1 only for no change value to other
-        else
+        else                      // the string 0 or 1 will only + with other neigbor.
             res *= str[i] - '0';
     }
     return res;
@@ -886,7 +1114,11 @@ cout<< "\nFacebook Interview Test\n";
 	fbin->getNextNode();	
 	cout << "Inorder (Left, Root, Right) : 4 2 5 1 3" << endl;
 
-//2. Find Minimum Depth of a Binary Tree
+	FindNextNodeatBT *fbin1 = new FindNextNodeatBT();
+	fbin1->CreateInorderTavel(root);
+	fbin->getNextNode();
+
+//#2. Find Minimum Depth of a Binary Tree
 
 //            0         level = 1
 //          /   \
@@ -894,10 +1126,10 @@ cout<< "\nFacebook Interview Test\n";
 //      /   \
 //    3      4          level = 3
 
-
+	cout << "\n#2 min tree depth = " << FindMinimumDepthOfABinaryTree1(root) <<endl;
 	cout << "\n#2 min tree depth = " << FindMinimumDepthOfABinaryTree(root) <<endl;
 
-//3 Convert Ternary Expression to a Binary Tree
+//#3 Convert Ternary Expression to a Binary Tree
 /*
 Input :  string expression =   a?b:c 
 Output :        a
@@ -981,7 +1213,7 @@ Output :     a
 
 //#9
     int bar[] = {6, 2, 5, 4, 5, 1, 6};  //=> Max area = 6x1
-	printf("\n#9 Max Area %d\n", LargestRectangularAreaInAHistogram(bar, sizeof(bar)/sizeof(bar[0])));
+	printf("\n#9 MaxArea %d\n", LargestRectangularAreaInAHistogram(bar, sizeof(bar)/sizeof(bar[0])));
 
 //10. Smallest subarray with sum greater than a given value
     int arrs[] = {15, 2, 4, 8, 9, 5, 10, 23};
@@ -1064,11 +1296,12 @@ Output :     a
     //string str1 = "123";
     //string str2 = "45";
 
-    cout << MultiplyLargeNumbersRepresentedAsStrings(str1, str2);
+    cout << MultiplyLargeNumbersRepresentedAsStrings(str1, str2)<<endl;
+	cout << MultiplyLargeNumbersRepresentedAsStrings1(str1, str2)<<endl;
 
 //#20
 	cout << "\n#20 boggle: " << "\n";
-    char *dictionary[] = {"GEEKS", "FOR", "QUIZ", "GEE"};
+    char *dictionary[] = {"GEEKS", "FOR", "QUIZ", "GO"};
     int size1 = 4;
 
     char boggle[N1][N1]   = {{'G','I','Z'},
@@ -1078,16 +1311,15 @@ Output :     a
     Boggle(boggle, dictionary, size1);
 
 //#21
-	cout << "\n#21 countDecoding: " << "\n";
+	cout << "\n#21 count Decoding 1~26 => A~Z: " << "\n";
     char digits[] = "1234";
     int n2 = strlen(digits);
     cout << " count is " << countDecoding(digits, n2) << endl;
 
 //#22
-	cout << "\n#22 calcMaxValue: " << "\n";
+	cout << "\n#22 find [0,1] string maximum value uing + or *" << "\n";
 	string str3 = "012340";
     cout << "Max number of " + str3 << " is " << calcMaxValue(str3) << endl;
-
 
 	int choice;
 	cin>>choice;

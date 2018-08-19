@@ -20,17 +20,18 @@ Algorithms and Data Structures for interview preparation - https://www.youtube.c
  
 */
 /*
-//Question: Given a Binary, how will you find the vertical Sumb of Binary Tree?
+//Question: Given a Binary, how will you find the vertical Sum of Binary Tree?
 
              1 (0)                 //For example, for this Binary tree it has 5 ferical lines. 
            /  	 \				    	For line 3 the sum will be: 1 +  5 + 7 = 13
 	(-1) 2        3 (1)
 		/  \     /  \
- (-2) 4     5(0)     6 (2)
-               /
-			7(0)
+ (-2) 4  (0)5  7(0)  6 (2)
 
-we nned to check the Horizontal Distances (HD) from root for all nodes
+Using Horizontal Distance to define vertcial tree. root node is 0, left chird increase 1, right child decrease 1
+using map (hash table put same HD node together.
+			
+we need to check the Horizontal Distances (HD) from root for all nodes
 
 The idea is simple
 HD for root is 0
@@ -48,7 +49,7 @@ if we go right then increase HD by 1 and update correspoinding index's value in 
 
 After travelsal we will have following map
 
-	Horizontal Distance           Sum
+	Horizontal Distance        Sum
 	      -2					4
 		  -1					2
 		  0						13
@@ -56,15 +57,28 @@ After travelsal we will have following map
 		  2						6
 */
 
+void VerticalSumofBinaryTree1(Node *root, int key, map<int, int> &m)
+{
+	if(root==NULL)
+		return;
+	
+	if(m.find(key)!=m.end())
+		m[key] = m[key]+root->key;
+	else
+		m.insert(pair<int, int>(key, root->key));
+	VerticalSumofBinaryTree1(root->left, key-1, m);
+	VerticalSumofBinaryTree1(root->right, key+1, m);
+}
+
 void VerticalSumofBinaryTree(Node *root, int key, map<int, int> &m)
 {
    if ( root != NULL ){  // (Otherwise, there's nothing to print.)
 	  cout << root->key << "("<< key << ")" << " ";	  
 
-	  if(m.find(key)!=m.end())
-		  m[key] = m[key] + root->key;
+	  if(m.find(key)!=m.end())  // check hash table has same HD key, if no, add new one, if yes add on sum
+		  m[key] = m[key] + root->key; // summary value
 	  else
-		  m.insert(pair<char,int>(key, root->key));
+		  m.insert(pair<int,int>(key, root->key));   //add new value
   	  VerticalSumofBinaryTree( root->left, key-1, m);    // Print items in left subtree.	  
       VerticalSumofBinaryTree( root->right, key+1, m);   // Print items in right subtree.
    }
@@ -74,15 +88,33 @@ void VerticalSumofBinaryTree(Node *root, int key, map<int, int> &m)
 //Question: Given Binary tree, how will you find its maximum width?
 //Solution1: Using hash map to story level (key) node number
 
+void FindBinaryTreeMaximumWidth1(Node *root, int key, std::map<int, int> &m)
+{
+	if(root==NULL)
+		return;
+	if(m.find(key)!=m.end())
+	{
+		m[key] = m[key]++;
+	}
+	else
+	{
+		m.insert(pair<int, int>(key, 1));
+	}
+	FindBinaryTreeMaximumWidth1(root->left, key+1, m);
+	FindBinaryTreeMaximumWidth1(root->right, key+1, m);
+}
+
+
 void FindBinaryTreeMaximumWidth(Node *root, int key, std::map<int, int> &m)
 {
    if ( root != NULL ){  // (Otherwise, there's nothing to print.)
 	    
 
-	  if(m.find(key)!=m.end())
-		  m[key] =  m[key]++;
+	  if(m.find(key)!=m.end())  //level number as key, for root key = 0, increase key when go to next child
+		  m[key] =  m[key]++;   //using hash tabel to count nodes at same level. if new lease inserte new 1. 
+	                            // if already has add 1 to the count
 	  else
-		  m.insert(pair<char,int>(key, 1));
+		  m.insert(pair<int,int>(key, 1));
   	  FindBinaryTreeMaximumWidth( root->left, key+1, m);    // Print items in left subtree.	  
       FindBinaryTreeMaximumWidth( root->right, key+1, m);   // Print items in right subtree.
 	  cout << root->key << "("<< key << ")" << " ";	
@@ -104,11 +136,91 @@ void FindBinaryTreeMaximumWidth(Node *root, int key, std::map<int, int> &m)
 
 
 
+// INCLUDE HEADER FILES NEEDED BY YOUR PROGRAM
+// SOME LIBRARY FUNCTIONALITY MAY BE RESTRICTED
+// DEFINE ANY FUNCTION NEEDED
+using namespace std;
+// FUNCTION SIGNATURE BEGINS, THIS FUNCTION IS REQUIRED
+
+#include <vector>
+class FindNodeDistanceatBT{
+	int point;
+	
+	vector<int> path;
+public:
+	FindNodeDistanceatBT()
+	{
+		point = 0;
+	}
+
+    void createBT(int *values, int n, int index)
+    {
+        if(values==NULL)
+            return;
+        path.push_back(values[index]);
+        if(index<n)
+        {
+            index++;
+            if(values[index]>values[index-1])
+            {
+                createBT(values, n, index);
+            }
+            else
+            {
+                createBT(values, n, index);
+            }
+        }
+        return;
+    }
+
+	int GetNextNode()
+	{
+		if(point>=path.size())
+			point = 0;
+		return path.at(point++);
+	}
+};
+
+
+int bstDistance(int *values, int n, int node1, int node2)
+{
+    // WRITE YOUR CODE HERE
+    FindNodeDistanceatBT *Nodes = new FindNodeDistanceatBT();
+    Nodes->createBT(values, n, 0);
+    int distance = -1;
+    
+    for(int index = 0; index<n; index++)
+    {
+        int node = Nodes->GetNextNode();
+        if(node==node1)
+        {
+            distance = 0;    
+        }
+        if(distance>=0)
+            distance++;
+
+        if(node==node2)
+        {
+            return distance;    
+        }
+        
+    }
+    delete Nodes;
+}
+// FUNCTION SIGNATURE ENDS
+
+
+
 /*
  * Main Contains Menu
  */
 int mainAmazon()
 {
+	int values[6] = {5, 6, 3, 1,2,4};
+	int n1 = 6;
+	int node1 = 2, node2 = 4;
+	bstDistance(values, n1, node1, node2);
+
 	//#1
 	cout<< "\nAmazton Interview Test\n";
 	cout << "\n#1 VerticalSumofBinaryTree:\n";
@@ -123,7 +235,8 @@ int mainAmazon()
 	n->right->right = new Node(6);
     
 	
-	VerticalSumofBinaryTree(n, 0, m);
+	//VerticalSumofBinaryTree(n, 0, m);
+	VerticalSumofBinaryTree1(n, 0, m);
 	cout <<"\n";
 	int max  = 0;
 	for(auto elem : m)
@@ -136,7 +249,8 @@ int mainAmazon()
 
 	cout << "\n#2 FindBinaryTreeMaximumWidth:\n";
 	m.clear();
-	FindBinaryTreeMaximumWidth(n, 0, m);
+	//FindBinaryTreeMaximumWidth(n, 0, m);
+	//FindBinaryTreeMaximumWidth1(n, 0, m);
 	cout <<"\n";
 	max  = 0;
 	for(auto elem : m)
