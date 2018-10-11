@@ -1,4 +1,5 @@
-#include <cppcoding.h>
+#include "stdafx.h" // for windows version
+#include "cppcoding.h"
 #include <math.h>
 bool primeNaive(int n){
     if(n==2)
@@ -46,7 +47,7 @@ bool heavyPill(double pills[], int n, double sum){
 //6.7 count famils G and B
 
 double runNFamiles(int n){
-
+	return 0;
 }
 
 int* runOneFamily(){

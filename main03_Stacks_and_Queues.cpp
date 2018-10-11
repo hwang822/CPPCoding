@@ -1,4 +1,6 @@
-#include <cppcoding.h>
+#include "stdafx.h" // for windows version
+#include "cppcoding.h"
+
 
 //3.1 Three in One: use a signle array to implement three stacks.
 
@@ -10,7 +12,7 @@ private:
     int *sizes;
 
 public:
-    FixeMultiStack(int stackSize){
+    void FixeMultiStack(int stackSize){
         stackCapacity = stackSize;
         values = new int[stackSize*numberofStatic];
         sizes = new int[numberofStatic];

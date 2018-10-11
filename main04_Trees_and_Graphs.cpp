@@ -1,4 +1,8 @@
-#include <cppcoding.h>
+#include "stdafx.h" // for windows version
+#include "cppcoding.h"
+#include <string>
+#include <Windows.h>
+using namespace std;
 
 //Binary Sort Trees
 

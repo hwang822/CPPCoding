@@ -31,6 +31,18 @@
 //         2       3
 //        / \
 //      4    5
+struct Node {
+	int key;
+	Node *left, *right;
+	Node(int i)
+	{
+		key = i;
+		left = NULL;
+		right = NULL;
+	}
+
+};
+
 
 class FindNextNodeatBT{
 	int point;

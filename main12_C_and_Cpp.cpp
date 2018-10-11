@@ -1,6 +1,7 @@
-
-#include <cppcoding.h>
-
+#include "stdafx.h" // for windows version
+#include "cppcoding.h"
+#include <string>
+#include <windows.h>
 #define NAME_SIZE 50 //Defines a macro
 
 //Clases, Inheritance, Constractors, Destructors, Virtual Function, Virtual Destructor
@@ -217,6 +218,7 @@ Test shallow_copy(Test & src){
     return dst;
 }
 
+#pragma warning(disable : 4996) //_CRT_SECURE_NO_WARNINGS
 Test deep_copy(Test src){
     Test dst;
     dst.ptr = (char*)malloc(strlen(src.ptr)+1);
@@ -249,11 +251,11 @@ public:
 //12.8 Copy Node: Copy Node structure as parameter and returns a complete copy of the node.
 
 
-struct Node{
-    int iName;
-    Node(int i){iName = i;}
-    Node *ptr1 = NULL;
-    Node *ptr2 = NULL;
+struct Node {
+	int iName;
+	Node(int i) { iName = i; }
+	Node *ptr1 = NULL;
+	Node *ptr2 = NULL;
 };
 
 #include <map>

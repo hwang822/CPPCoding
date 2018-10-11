@@ -86,6 +86,18 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="main01_Array_and_Strings.cpp" />
+    <ClCompile Include="main02_Linked_List.cpp" />
+    <ClCompile Include="main03_Stacks_and_Queues.cpp" />
+    <ClCompile Include="main04_Trees_and_Graphs.cpp" />
+    <ClCompile Include="main05_Bit_Manipulation.cpp" />
+    <ClCompile Include="main06_Math_and_Logic_Puzzles.cpp" />
+    <ClCompile Include="main07_Object_Oriented_Design.cpp" />
+    <ClCompile Include="main08_Recursion_and_Dynamic_Programming.cpp" />
+    <ClCompile Include="main09_System_Design_and_Scalability.cpp" />
+    <ClCompile Include="main10_Sorting_and_Searching.cpp" />
+    <ClCompile Include="main11_Testing.cpp" />
+    <ClCompile Include="main12_C_and_Cpp.cpp" />
     <ClCompile Include="mainAmazon.cpp" />
     <ClCompile Include="mainFacebook.cpp" />
     <ClCompile Include="stdafx.cpp">

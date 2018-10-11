@@ -57,6 +57,18 @@ After travelsal we will have following map
 		  2						6
 */
 
+struct Node {
+	int key;
+	Node *left, *right;
+	Node(int i)
+	{
+		key = i;
+		left = NULL;
+		right = NULL;
+	}
+
+};
+
 void VerticalSumofBinaryTree1(Node *root, int key, map<int, int> &m)
 {
 	if(root==NULL)

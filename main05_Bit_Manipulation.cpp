@@ -1,4 +1,5 @@
-#include <cppcoding.h>
+#include "stdafx.h" // for windows version
+#include "cppcoding.h"
 
 //5.1 Insertion
 int UpdateBits(int n, int m, int i, int j){

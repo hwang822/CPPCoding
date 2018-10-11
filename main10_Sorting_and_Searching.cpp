@@ -1,4 +1,5 @@
-#include <cppcoding.h>
+#include "stdafx.h" // for windows version
+#include "cppcoding.h"
 
 
 
@@ -178,7 +179,7 @@ void merge(int a[], int b[], int lasta, int lastb){
 
 
 
-#include <bits/stdc++.h>
+//#include <bits/stdc++.h>
 
 /*
 

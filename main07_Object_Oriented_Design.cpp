@@ -1,4 +1,5 @@
-#include <cppcoding.h>
+#include "stdafx.h" // for windows version
+#include "cppcoding.h"
 
 //7 Design Pattern
 

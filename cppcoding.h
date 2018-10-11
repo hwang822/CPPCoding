@@ -9,17 +9,6 @@ using namespace std;
 
 enum State { Univisited, Visited, Visting};
 
-struct Node{
-    int key;
-    Node *left, *right;
-    Node(int i)
-	{
-        key = i;
-        left = NULL;
-        right = NULL;
-    }
-
-};
 
 struct TreeNode{
     int iItem;
@@ -54,7 +43,7 @@ int main09();
 int main10();
 int main11();
 int main12();
-int mainleetcode();
+//int mainleetcode();
 int mainFacebook();
 int mainAmazon();
 #endif // CPPCODING_H

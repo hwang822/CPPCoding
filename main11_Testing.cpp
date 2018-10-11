@@ -1,4 +1,5 @@
-#include <cppcoding.h>
+#include "stdafx.h" // for windows version
+#include "cppcoding.h"
 
 //11.1 Mistake Find the mistake(s) in the following code:
 
