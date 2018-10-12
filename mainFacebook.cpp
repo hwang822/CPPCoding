@@ -104,15 +104,15 @@ public:
 };
 
 //2. Find Minimum Depth of a Binary Tree
-int FindMinimumDepthOfABinaryTree1(Node *root){
+int FindMaxSummaryBranchOfABinaryTree(Node *root){
 	if((root->right==NULL)&&(root->left==NULL))
-		return 1;
+		return root->key;
 	if(root->right==NULL)
-		return FindMinimumDepthOfABinaryTree1(root->left)+1;
+		return FindMaxSummaryBranchOfABinaryTree(root->left) + root->key;
 	if(root->left==NULL)
-		return FindMinimumDepthOfABinaryTree1(root->right)+1;
-	return min(FindMinimumDepthOfABinaryTree1(root->left),
-		FindMinimumDepthOfABinaryTree1(root->right))+1;
+		return FindMaxSummaryBranchOfABinaryTree(root->right) + root->key;
+	return max(FindMaxSummaryBranchOfABinaryTree(root->left) + root->key,
+		FindMaxSummaryBranchOfABinaryTree(root->right) + root->key);
 }
 
 int FindMinimumDepthOfABinaryTree(Node *root){
@@ -144,7 +144,7 @@ int FindMinimumDepthOfABinaryTree(Node *root){
 void printTree(Node *root){
     if(!root)
         return;
-
+	// using recursing
     cout<<root->key<<" ";
     printTree(root->left);
     printTree(root->right);
@@ -1132,14 +1132,14 @@ cout<< "\nFacebook Interview Test\n";
 
 //#2. Find Minimum Depth of a Binary Tree
 
-//            0         level = 1
+//            1         level = 0
 //          /   \
-//		  1       2     level = 2
+//		  2       3     level = 1
 //      /   \
-//    3      4          level = 3
+//    4      5          level = 2
 
-	cout << "\n#2 min tree depth = " << FindMinimumDepthOfABinaryTree1(root) <<endl;
-	cout << "\n#2 min tree depth = " << FindMinimumDepthOfABinaryTree(root) <<endl;
+	cout << "\n#2 max summary branch of BT = " << FindMaxSummaryBranchOfABinaryTree(root) <<endl; // 5 + 2 + 1 = 8
+	cout << "\n#2 min tree depth = " << FindMinimumDepthOfABinaryTree(root) <<endl; // level = 2
 
 //#3 Convert Ternary Expression to a Binary Tree
 /*
@@ -1156,6 +1156,7 @@ Output :     a
        c    d	
 */
     string expression = "a?b?c:d:e";
+
     root = ConvertTernaryExpressionToABinaryTree(expression, 0);
     printTree(root);
 
@@ -1334,7 +1335,7 @@ Output :     a
     cout << "Max number of " + str3 << " is " << calcMaxValue(str3) << endl;
 
 	int choice;
-	cin>>choice;
+	//cin>>choice;
 
     return 0;
 }

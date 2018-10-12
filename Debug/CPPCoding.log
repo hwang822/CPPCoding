@@ -1,4 +1,4 @@
-﻿  mainAmazon.cpp
-e:\workarea\cppcoding\mainamazon.cpp(198): warning C4018: '>=': signed/unsigned mismatch
-e:\workarea\cppcoding\mainamazon.cpp(229): warning C4715: 'bstDistance': not all control paths return a value
+﻿  main01_Array_and_Strings.cpp
+e:\workarea\cppcoding\main01_array_and_strings.cpp(134): warning C4101: 'tm': unreferenced local variable
+e:\workarea\cppcoding\main01_array_and_strings.cpp(60): warning C4715: 'permutation': not all control paths return a value
   CPPCoding.vcxproj -> E:\Workarea\CPPCoding\Debug\CPPCoding.exe

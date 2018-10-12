@@ -132,7 +132,7 @@ int main01(){
 
 //    vector<int> nums = new vector<int>(){1,2,3};
     TwoUsm tm;
-    vector<int> ret1 =  tm.twosum(nums, 17);
+    //vector<int> ret1 =  tm.twosum(nums, 17);
     return 0;
 }
 
