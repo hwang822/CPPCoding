@@ -4,6 +4,10 @@
 #include "cppcoding.h"
 #include <map>
 #include <iostream>
+#include <string>
+
+#include <algorithm>
+
 using namespace std;
  
 
@@ -28,7 +32,7 @@ Algorithms and Data Structures for interview preparation - https://www.youtube.c
 		/  \     /  \
  (-2) 4  (0)5  7(0)  6 (2)
 
-Using Horizontal Distance to define vertcial tree. root node is 0, left chird increase 1, right child decrease 1
+Using Horizontal Distance to define vertcial tree. root node is 0, left chird decrease 1, right child increase 1
 using map (hash table put same HD node together.
 			
 we need to check the Horizontal Distances (HD) from root for all nodes
@@ -65,6 +69,10 @@ struct Node {
 		key = i;
 		left = NULL;
 		right = NULL;
+	}
+
+	Node()
+	{
 	}
 
 };
@@ -221,20 +229,133 @@ int bstDistance(int *values, int n, int node1, int node2)
 }
 // FUNCTION SIGNATURE ENDS
 
+//#0 Interview questions, how to find binary tree of this array tow nodes distance.  
 
+// Function to insert nodes in level order 
+Node* CreateBTfromArray(int arr[], Node* root,
+	int i, int n)
+{
+	// Base case for recursion 
+	if (i < n)
+	{
+		Node* temp = new Node(arr[i]);
+		root = temp;
+
+		// insert left child 
+		root->left = CreateBTfromArray(arr,
+			root->left, 2 * i + 1, n);
+
+		// insert right child 
+		root->right = CreateBTfromArray(arr,
+			root->right, 2 * i + 2, n);
+	}
+	return root;
+}
+
+// Returns true if there is a path from root 
+// to the given node. It also populates  
+// 'arr' with the given path 
+bool hasPath(Node *root, vector<int>& arr, int x)
+{
+	// if root is NULL 
+	// there is no path 
+	if (!root)
+		return false;
+
+	// push the node's value in 'arr' 
+	arr.push_back(root->key);
+
+	// if it is the required node 
+	// return true 
+	if (root->key == x)
+		return true;
+
+	// else check whether the required node lies 
+	// in the left subtree or right subtree of  
+	// the current node 
+	if (hasPath(root->left, arr, x) ||
+		hasPath(root->right, arr, x))
+		return true;
+
+	// required node does not lie either in the  
+	// left or right subtree of the current node 
+	// Thus, remove current node's value from  
+	// 'arr'and then return false     
+	arr.pop_back();
+	return false;
+}
+// Function to print tree nodes in 
+// InOrder fashion 
+int inOrder(Node* root, int start, int end)
+{
+	if (root != NULL)
+	{
+		inOrder(root->left, start, end);
+		cout << root->key << " ";
+		inOrder(root->right, start, end);
+	}
+	return 0;
+}
+
+int btDistnace(int values[], int n1, int node1, int node2)
+{
+	Node* root = NULL;
+
+	root = CreateBTfromArray(values, root, 0, n1);
+	// vector to store the path
+	vector<int> path1;
+	vector<int> path2;
+	int distance = 0;
+	int sharedpath = 0;
+	if (hasPath(root, path1, node1) && hasPath(root, path2, node2))
+	{
+		distance = path1.size() + path2.size();
+		int minDis = min(path1.size(), path2.size());
+
+		for (int index = 0; index < minDis - 1; index++)
+		{
+			if (path1[index] != path2[index])
+				break;
+			sharedpath++;
+		}
+	}
+
+	inOrder(root, node1, node2);
+	// 1, 6, 2 ,5, 4, 3
+
+	distance = distance - sharedpath * 2;
+	return distance;
+}
 
 /*
  * Main Contains Menu
  */
+
+
+
 int mainAmazon()
 {
-	int values[6] = {5, 6, 3, 1,2,4};
-	int n1 = 6;
+
+	//#0 Interview questions, how to find binary tree of this array tow nodes distance.  
+
+	int values[6] = {5, 6, 3, 1, 2, 4};
+	int n1 = sizeof(values)/ sizeof(values[0]);
 	int node1 = 2, node2 = 4;
+
+	// build binar tree from data array.  first item is root then left, right winth index = 2i+1
+//	          5
+//			/   \
+//		   6     3
+//        /\    /
+//       1	2  4 
+	
+	int idis = btDistnace(values, n1, node1, node2);
+	cout << "\nAmazton Interview Test: \n" << idis << endl;
+
 	bstDistance(values, n1, node1, node2);
+	cout << "\nAmazton Interview Test: \n" << bstDistance << endl;
 
 	//#1
-	cout<< "\nAmazton Interview Test\n";
 	cout << "\n#1 VerticalSumofBinaryTree:\n";
 	map<int, int> m;
 
@@ -246,7 +367,6 @@ int mainAmazon()
 	n->right->left = new Node(7);
 	n->right->right = new Node(6);
     
-	
 	//VerticalSumofBinaryTree(n, 0, m);
 	VerticalSumofBinaryTree1(n, 0, m);
 	cout <<"\n";
