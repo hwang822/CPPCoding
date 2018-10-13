@@ -1,4 +1,41 @@
-﻿  main01_Array_and_Strings.cpp
+﻿  stdafx.cpp
+  main.cpp
+  main01_Array_and_Strings.cpp
 e:\workarea\cppcoding\main01_array_and_strings.cpp(134): warning C4101: 'tm': unreferenced local variable
+  main02_Linked_List.cpp
+  main03_Stacks_and_Queues.cpp
+  main04_Trees_and_Graphs.cpp
+e:\workarea\cppcoding\main04_trees_and_graphs.cpp(173): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  main05_Bit_Manipulation.cpp
+e:\workarea\cppcoding\main05_bit_manipulation.cpp(55): warning C4554: '<<': check operator precedence for possible error; use parentheses to clarify precedence
+  main06_Math_and_Logic_Puzzles.cpp
+  main07_Object_Oriented_Design.cpp
+  main08_Recursion_and_Dynamic_Programming.cpp
+  main09_System_Design_and_Scalability.cpp
+  main10_Sorting_and_Searching.cpp
+  main11_Testing.cpp
+e:\workarea\cppcoding\main11_testing.cpp(18): warning C4101: 'i': unreferenced local variable
+  main12_C_and_Cpp.cpp
+  mainAmazon.cpp
+e:\workarea\cppcoding\mainamazon.cpp(164): warning C4018: '>=': signed/unsigned mismatch
+  mainFacebook.cpp
+e:\workarea\cppcoding\mainfacebook.cpp(68): warning C4018: '>=': signed/unsigned mismatch
+e:\workarea\cppcoding\mainfacebook.cpp(158): warning C4018: '>=': signed/unsigned mismatch
+e:\workarea\cppcoding\mainfacebook.cpp(173): warning C4018: '<': signed/unsigned mismatch
+e:\workarea\cppcoding\mainfacebook.cpp(175): warning C4018: '<': signed/unsigned mismatch
+e:\workarea\cppcoding\mainfacebook.cpp(565): warning C4018: '<': signed/unsigned mismatch
+e:\workarea\cppcoding\mainfacebook.cpp(618): warning C4018: '<': signed/unsigned mismatch
+e:\workarea\cppcoding\mainfacebook.cpp(623): warning C4018: '<': signed/unsigned mismatch
+e:\workarea\cppcoding\mainfacebook.cpp(691): warning C4018: '<': signed/unsigned mismatch
+e:\workarea\cppcoding\mainfacebook.cpp(1006): warning C4018: '<': signed/unsigned mismatch
+e:\workarea\cppcoding\mainfacebook.cpp(1030): warning C4018: '<': signed/unsigned mismatch
+e:\workarea\cppcoding\mainfacebook.cpp(1090): warning C4018: '<': signed/unsigned mismatch
+e:\workarea\cppcoding\mainfacebook.cpp(1338): warning C4101: 'choice': unreferenced local variable
+  Generating Code...
+e:\workarea\cppcoding\main06_math_and_logic_puzzles.cpp(58): warning C4172: returning address of local variable or temporary: genders
+e:\workarea\cppcoding\main04_trees_and_graphs.cpp(86): warning C4715: 'getValue': not all control paths return a value
+e:\workarea\cppcoding\main04_trees_and_graphs.cpp(134): warning C4715: 'createMinmalBSTFromSortedArray': not all control paths return a value
+e:\workarea\cppcoding\main04_trees_and_graphs.cpp(201): warning C4715: 'checkBST': not all control paths return a value
+e:\workarea\cppcoding\main04_trees_and_graphs.cpp(121): warning C4715: 'createMinmalBSTFromUusortedArray': not all control paths return a value
 e:\workarea\cppcoding\main01_array_and_strings.cpp(60): warning C4715: 'permutation': not all control paths return a value
   CPPCoding.vcxproj -> E:\Workarea\CPPCoding\Debug\CPPCoding.exe

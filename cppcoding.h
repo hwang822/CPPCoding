@@ -9,6 +9,16 @@ using namespace std;
 
 enum State { Univisited, Visited, Visting};
 
+struct Node {
+	int key;
+	Node *left = NULL;
+	Node *right = NULL;
+	Node(int i) {
+		key = i;
+	}
+};
+
+
 
 struct TreeNode{
     int iItem;

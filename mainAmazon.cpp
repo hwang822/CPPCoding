@@ -60,7 +60,7 @@ After travelsal we will have following map
 		  1						3
 		  2						6
 */
-
+/*
 struct Node {
 	int key;
 	Node *left, *right;
@@ -72,7 +72,7 @@ struct Node {
 	}
 
 };
-
+*/
 void VerticalSumofBinaryTree1(Node *root, int key, map<int, int> &m)
 {
 	//Given a Binary Tree, find vertical sum of the nodes that are in 
@@ -236,6 +236,32 @@ Node* CreateBTfromArray(int arr[],
 	return temp;
 }
 
+int hasTwoItems(Node *root, int x, int y)
+{
+	if (root)
+	{
+		int count = 0;
+		if ((root->key == x) || (root->key == y))
+			count ++;
+
+		return count + hasTwoItems(root->left, x, y) +
+			hasTwoItems(root->right, x, y);
+	}
+	return 0;
+}
+
+bool hasItem(Node *root, int x)
+{
+	if (!root)
+		return false;
+	if (root->key == x)
+		return true;
+	if (hasItem(root->left, x) || hasItem(root->right, x))
+		return true;
+	else
+		return false;
+}
+
 // Returns true if there is a path from root 
 // to the given node. It also populates  
 // 'arr' with the given path 
@@ -270,7 +296,7 @@ bool hasPath(Node *root, vector<int>& arr, int x)
 }
 // Function to print tree nodes in 
 // InOrder fashion 
-int InOrder(Node* root)
+void InOrder(Node* root)
 {
 	if (root != NULL)
 	{
@@ -278,11 +304,11 @@ int InOrder(Node* root)
 		cout << root->key << " ";
 		InOrder(root->right);
 	}
-	return 0;
+	return;
 }
 
 // PreOrder fashion 
-int PreOrder(Node* root)
+void PreOrder(Node* root)
 {
 	if (root != NULL)
 	{
@@ -290,11 +316,11 @@ int PreOrder(Node* root)
 		PreOrder(root->left);
 		PreOrder(root->right);
 	}
-	return 0;
+	return;
 }
 
 // PostOrder fashion 
-int PostOrder(Node* root)
+void PostOrder(Node* root)
 {
 	if (root != NULL)
 	{
@@ -302,7 +328,7 @@ int PostOrder(Node* root)
 		PostOrder(root->right);
 		cout << root->key << " ";
 	}
-	return 0;
+	return;
 }
 
 int btDistnace(int values[], int n1, int node1, int node2)
@@ -351,6 +377,15 @@ int btDistnace(int values[], int n1, int node1, int node2)
 	PostOrder(root);
 	cout << endl;
 	// 1, 2 ,3, 4, 5, 6
+
+	cout << "has 5: " << hasItem(root, 5) << endl;
+	cout << "has 10: " << hasItem(root, 10) << endl;
+
+	cout << "has 5 & 2: " << hasTwoItems(root, 5, 2) << endl;
+	cout << "has 2 & 4: " << hasTwoItems(root, 2, 4) << endl;
+	cout << "has 10 & 4: " << hasTwoItems(root, 10, 4) << endl;
+	cout << "has 5 & 5: " << hasTwoItems(root, 10, 4) << endl;
+	cout << "has 10 & -1: " << hasTwoItems(root, 10, -1) << endl;
 
 	// vector to store the path
 	vector<int> path1;

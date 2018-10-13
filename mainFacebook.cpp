@@ -31,6 +31,7 @@
 //         2       3
 //        / \
 //      4    5
+/*
 struct Node {
 	int key;
 	Node *left, *right;
@@ -43,7 +44,7 @@ struct Node {
 
 };
 
-
+*/
 class FindNextNodeatBT{
 	int point;
 	vector<Node *> path;

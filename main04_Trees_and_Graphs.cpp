@@ -1,13 +1,14 @@
 #include "stdafx.h" // for windows version
 #include "cppcoding.h"
 #include <string>
+#include <list>
 #include <Windows.h>
 using namespace std;
 
 //Binary Sort Trees
 
 
-int countNodes(TreeNode *root){
+int countNodes(Node *root){
 
 
     if(root == NULL)
@@ -30,26 +31,23 @@ void preorderPrint(TreeNode *root){
 
 }
 
-bool treeContrins(TreeNode *root, string item){
+bool treeContains(Node *root, int item){
     if(root==NULL){
         return false;
     }
-    else if (item == root->sItem) {
+    else if (item == root->key) {
         return true;
     }
-    else if (item < root->sItem) {
-             return treeContrins(root->left, item);
-    }
-    else{
-        return treeContrins(root->right, item);
+    else  {
+        return treeContains(root->left, item) || treeContains(root->right, item);
     }
 
 }
 
-void inorderPrint( TreeNode *root ) {
+void inorderPrint( Node *root ) {
    if ( root != NULL ){  // (Otherwise, there's nothing to print.)
       inorderPrint( root->left );    // Print items in left subtree.
-      cout << root->sItem << " ";     // Print the root item.
+      cout << root->key << " ";     // Print the root item.
       inorderPrint( root->right );   // Print items in right subtree.
    }
 
@@ -88,22 +86,20 @@ double getValue(TreeNode *node){
 }
 
 
-//4.1 Route Between Nodes
+//4.1 Route Between Nodes.
 
+int hasRoute(Node *root, int x, int y)
+{
+	if (root)
+	{
+		int count = 0;
+		if ((root->key == x) || (root->key == y))
+			count++;
 
-bool search(TreeNode *start, TreeNode *end){
-
-    if((start==NULL)||(end==NULL))
-        return false;
-    if(start==end)
-    {
-        cout << "connected!" << endl;
-        return true;
-    }
-    if(search(start, start->left))
-        return false;
-    if(search(start, start->right))
-        return false;
+		return count + hasRoute(root->left, x, y) +
+			hasRoute(root->right, x, y);
+	}
+	return 0;
 }
 
 //4.2 Minimal Tree:
@@ -124,30 +120,64 @@ TreeNode* createMinmalBSTFromUusortedArray(int arr[], int start, int end){
 
 }
 
-
-TreeNode* createMinmalBSTFromSortedArray(int arr[], int start, int end){
+//4.2 Minmal Tree: Given a sorted (increasing order) array with unique interger elements, create BST with minimal height.
+Node* createMinmalBSTFromSortedArray(int arr[], int start, int end){
     if(end < start){
         return NULL;
     }
 
     int mid = (start+end)/2;
-    TreeNode *n = new TreeNode(arr[mid]);
+    Node *n = new Node(arr[mid]);
     cout << arr[mid] << " " << endl;
     n->left = createMinmalBSTFromSortedArray(arr, start, mid-1);
     n->right = createMinmalBSTFromSortedArray(arr, mid+1, end);
 }
 
 //4.3 List of Depths: Given a binary tree, design an algorithm which creates a linked list of all the ndoes at each depth.
+void getDepthArray(int* depths, int depth)
+{
+	for (int index = 0; index < depth; index++)
+	{
+		printf("%d ", depths[index]);
+	}
+	printf("\n");
+}
+
+void ListofDepthsRecur(Node* root, int *depths, int depth)
+{
+	if (!root)
+		return;
+	// append this node to the path array
+	depths[depth] = root->key;
+	depth++;
+	if (root->left == NULL && root->right == NULL)
+	{
+		getDepthArray(depths, depth);
+	}
+	else
+	{
+		ListofDepthsRecur(root->left, depths, depth);
+		ListofDepthsRecur(root->right, depths, depth);
+	}
+}
+
+
+void ListofDepths(Node* root)
+{
+	int depth[1000];
+	ListofDepthsRecur(root, depth, 0);
+}
+
 
 //4.4 Check Balanced:
 #include <math.h>;
 
-int getHeight(TreeNode *root){
+int getHeight(Node *root){
     if(root == NULL) return -1;
     return max(getHeight(root->left), getHeight(root->right))+1;
 }
 
-bool isBlanced(TreeNode *root){
+bool isBlanced(Node *root){    // a blanced tree is the heights of the two subtrees of any nodes never differ by more than one.
     if(root == NULL) return true;
 
     int heightDiff = abs(getHeight(root->left) - getHeight(root->right));
@@ -159,30 +189,71 @@ bool isBlanced(TreeNode *root){
 
 
 //4.5 Vaildate BST: Implement a fucntion to check if a binary three is binary search tree
-//bool checkBST(TreeNode *n){
-//    return checkBST(n, -1, -1);
-//}
 
-bool checkBST(TreeNode *n, int min, int max){
+bool checkBST(Node *n, int min, int max){
     if(n==NULL)
         return true;
 
-    if((min!=-1)&&(n->iItem<=min)||(max!=-1)&&(n->iItem>=max))
+    if((min!= NULL)&&(n->key<=min)||(max!= NULL)&&(n->key >=max))
         return false;
-    if(!checkBST(n->left, min, n->iItem)||!checkBST(n->right, n->iItem, max))
+    if(!checkBST(n->left, min, n->key)||!checkBST(n->right, n->key, max))
         return true;
 }
 
-
+Node* CreateBTFromArray(int* values, int i, int n)
+{
+	Node* root = NULL;
+	if (i<n)
+	{ 
+		root = new Node(values[i]);
+		root->left = CreateBTFromArray(values, i*2+1, n);
+		root->right = CreateBTFromArray(values, i * 2 + 2, n);
+	}
+	return root;
+}
 
 
 int main04(){
 
-    int array[] = {1,4,7,8,9,10,23,45};
-    int size5 = sizeof(array)/sizeof(array[0]);
-    TreeNode* node = createMinmalBSTFromSortedArray(array, 0, size5-1);
+    int values[] = {1,4,7,8,9,10,23,45};
+    int size = sizeof(values)/sizeof(values[0]);
+	cout << endl;
+	//          1
+	//        /   \
+	//       4     7
+	//     /  \   /  \
+	//    8    9 10  23
+	//   /
+	// 45
 
-    //createMinmalBSTFromUusortedArray
+	Node* root = CreateBTFromArray(values, 0, size);
+	inorderPrint(root);
+	cout << endl;
+	//4.1 Route Between Nodes.
+	cout << "Route Between Nodes 4, 23 : " << hasRoute(root, 4, 23);
+
+	//4.2 Minmal Tree: Given a sorted (increasing order) array with unique interger elements, create BST with minimal height.
+    Node* node = createMinmalBSTFromSortedArray(values, 0, size-1);
+	cout << "Minmal Tree : " << endl;
+	inorderPrint(root);
+	cout << endl;
+
+	//4.3 List of Depths: Given a binary tree, design an algorithm which creates a linked list of all the ndoes at each depth.
+	cout << "List of Depths: " << endl;
+	ListofDepths(root);
+    
+	//4.4 Check Blanced:
+	cout << "Check Blanced: " << isBlanced(root) << endl;
+
+	//4.5 Vaildate BST: Implement a fucntion to check if a binary three is binary search tree
+	cout << "Vaildate BST: " << checkBST(root, NULL, NULL) << endl;
+
+	// Count nodes
+	cout << "Count nodes of tree: " << countNodes(root) << endl;
+
+	// Tree Contains value?
+	cout << "Tree contain 4 ? " << treeContains(root, 4);
+
 
     return 0;
 }

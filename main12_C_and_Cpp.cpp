@@ -250,14 +250,14 @@ public:
 
 //12.8 Copy Node: Copy Node structure as parameter and returns a complete copy of the node.
 
-
+/*
 struct Node {
 	int iName;
 	Node(int i) { iName = i; }
 	Node *ptr1 = NULL;
 	Node *ptr2 = NULL;
 };
-
+*/
 #include <map>
 
 typedef map<Node*, Node*> NodeMap;
@@ -272,11 +272,11 @@ Node * copy_recursive(Node * cur, NodeMap & nodeMap) {
         return i->second;
     }
 
-    Node * node = new Node(cur->iName);
+    Node * node = new Node(cur->key);
 
     nodeMap[cur] = node;
-    node->ptr1 = copy_recursive(cur->ptr1, nodeMap);
-    node->ptr2 = copy_recursive(cur->ptr2, nodeMap);
+    node->left = copy_recursive(cur->left, nodeMap);
+    node->right = copy_recursive(cur->right, nodeMap);
     return node;
 }
 
@@ -340,20 +340,20 @@ int main12(){
     int i = 0;
 
     Node * root = new Node(i++);
-    root->ptr1 = new Node(i++);
-    root->ptr2 = new Node(i++);
+    root->left = new Node(i++);
+    root->right = new Node(i++);
 
-    root->ptr1->ptr1 = new Node(i++);
-    root->ptr1->ptr2 = new Node(i++);
+    root->left->left = new Node(i++);
+    root->left->right = new Node(i++);
 
-    root->ptr2->ptr1 = new Node(i++);
-    root->ptr2->ptr2 = new Node(i++);
+    root->right->left = new Node(i++);
+    root->right->right = new Node(i++);
 
-    root->ptr1->ptr1->ptr1 = new Node(i++);
-    root->ptr1->ptr1->ptr2 = new Node(i++);
+    root->left->left->left = new Node(i++);
+    root->left->left->right = new Node(i++);
 
-    root->ptr2->ptr2->ptr1 = new Node(i++);
-    root->ptr2->ptr2->ptr2 = new Node(i++);
+    root->right->right->left = new Node(i++);
+    root->right->right->right = new Node(i++);
 
     Node * copy = copy_structure(root);
 
