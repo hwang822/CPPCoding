@@ -361,11 +361,12 @@ void findFibSubset(int arr[], int n){
 
     // Find maximum Fibonacci element in arr[]
 	//The Fibonacci Numbers are the numbers that every number after the first two is the sum of the two preceding ones.
-
+	// find max number in array to set up boundary of serial number of Fibonacci number
     int max = *std::max_element(arr, arr+n);
 
     // Generate all Fibonacci numbers till
     // max and store them in hash.
+	//hash table is data connection contains with set only or pair key and values.
     int a = 0, b = 1;
     unordered_set<int> hash;
     hash.insert(a);

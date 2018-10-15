@@ -9,7 +9,6 @@
 #include <algorithm>
 
 using namespace std;
- 
 
 /*
 Interview Prep Call: Upon a successful assessment we will then schedule a “prep call” as to better prepare you for your interview.
@@ -23,6 +22,50 @@ CS Dojo YouTube channel is helpful for brushing up on Maps, Trees, Tables, and A
 Algorithms and Data Structures for interview preparation - https://www.youtube.com/watch?v=BchPukWb0CU 
  
 */
+
+//interview tesete 10/14/2018
+/*
+  Amazon Fresh is a grocery delivery service that offers consumers the option of purchasing their groceries online 
+  and schedule future deliveries of purchased groceries. Amazon’s backend system dynamically tracks each Amazon Fresh 
+  delivery truck’s plan. To accomplish this, the system generates several delivery plans and then selects the most 
+  optimized plan during runtime. In this scenario, the most optimized plan would be to deliver to the closest X 
+  destinations among all of the possible destinations in the plan. You are required to write a function to determine 
+  what the closest X destinations are to me delivered in this plan.
+  
+  Given an array of  possible delivery destinations, implement an algorithm to create the delivery plan for the closest X desinations.
+
+  For example: 3 distiations at [1, 2], [2, 3], [-1, 1]. this distance from [0.0] is sqr(1*1+2*2), sqr(2*2+3*3) and 
+  sqr((-1)*(-1)+1*1). The 2 devlers will select [1,2], [-1,1]
+
+*/
+#include <algorithm>
+#include <vector>
+vector<pair<int, int>> ClosestXdestinations(int numDestinations, int **allLocations, int numDeliveries)
+{
+	vector<pair<int, int>> path;
+	vector< pair <float, pair<int, int>> > vect;
+	float fDistance = 0;
+	for (int index = 0; index < numDestinations; index++)
+	{
+		pair<int, int> data;
+		data.first = allLocations[index][0];
+		data.second = allLocations[index][1];
+		fDistance = sqrt((data.first*data.first + data.second * data.second));
+		pair<double, pair<int, int>> dist;
+		dist.first = fDistance;
+		dist.second = data;
+		vect.push_back(dist);
+	}
+	sort(vect.begin(), vect.end());
+	for (int i = 0; i < numDeliveries; i++)
+	{
+		pair<int, int> data = vect[i].second;
+		path.push_back(data);
+	}
+	return path;
+}
+
+
 /*
 //Question: Given a Binary, how will you find the vertical Sum of Binary Tree?
 
@@ -410,15 +453,101 @@ int btDistnace(int values[], int n1, int node1, int node2)
 	return distance;
 }
 
+int RoadMap(int **map, int M, int N, int m, int n)
+{
+	if ((m >= M) || (n >= N)) {
+		cout << "(" << m << "," << n << ") out of range." << endl;
+		return false; // get out of (M, N) 
+	}
+
+	if ((m == M - 1) && (n == N - 1)) {
+		cout << "(" << m << "," << n << ") ended" << endl;
+		return true; // get arrive (M, N) 
+	}
+
+	if (map[m][n] == true) {
+		cout << "(" << m << "," << n << ") visted or blacked" << endl;
+		return false; //(m, n) empty
+	}
+	else
+	{
+		cout << "(" << m << "," << n << ") visted" << endl;
+		map[m][n] = true; // (m, n) visted no need come back
+	}
+
+	bool found = false;
+	if (m < M - 1)
+		found = RoadMap(map, M, N, m + 1, n);  // get next setp at H move
+	if (!found) {
+		if (n < N - 1)
+			found = RoadMap(map, M, N, m, n + 1); // get next setp at V move
+	}
+	return found;
+
+}
+
+
+int minimumDistance(int numRows, int numColumns, int **area)
+{
+	return RoadMap(area, numRows, numColumns, 0, 0);
+}
+
 /*
  * Main Contains Menu
  */
 
-
-
 int mainAmazon()
 {
+	// Amazon interview teset
+	//A. find out bester devlever track for numdevelopers for [0,0] to alllocations [x, y] ...
+	int numDestinations = 3, numDeliveries = 2;
+	//allLocations[3][2] = {{1,2}, {2,3}, {-1,1}};
+	
+	int **allLocations = new int*[3];
+	for (int i = 0; i < 3; i++)
+		allLocations[i] = new int[2];
+	allLocations[0][0] = 1;
+	allLocations[0][1] = 2;
+	allLocations[1][0] = 2;
+	allLocations[1][1] = 3;
+	allLocations[2][0] = -1;
+	allLocations[2][1] = 1;
 
+	vector<pair<int, int>> path = ClosestXdestinations(numDestinations, allLocations, numDeliveries);
+
+	cout << "ClosestXdestinations: " << "[" << path[0].first << "," << path[0].second << "], [" << path[1].first << "," << path[1].second << "]" << endl;
+
+	//B. find out min distance in path from [0,0] to [M, N] at MxN array and some points no path.
+	int numRows = 4, numColumns = 5;
+	
+	//int area1[4][5] = { {0,0,0,1,0},{0,0,0,0,0},{0,0,0,0,0},{0,0,0,0,0} };
+
+	
+	//You have a multidimensional array area[i][j] and
+	//	**area addresses to area[0][0]
+	// *((*area)+1) addresses to area[0][1]
+	// *(*(area + 1) + 1) addresses to area[1][1]
+
+
+	int **area = new int*[4];
+	for (int i = 0; i < 3; i++)
+		area[i] = new int[5];
+
+	area[0] = new int[5]{ 0,0,0,1,0 };
+	area[1] = new int[5]{ 0,0,0,0,0 };
+	area[2] = new int[5]{ 0,0,0,0,0 };
+	area[3] = new int[5]{ 0,0,0,0,0 };
+	area[4] = new int[5]{ 0,0,0,0,0 };
+
+	//   * * *   * 
+	//   * * * * * 
+	//   * * * * *  
+	//   * * * * * 
+
+	
+
+	cout << "minimumDistance: " << minimumDistance(numRows, numColumns, area) << endl;
+	
 	//#0 Interview questions, how to find binary tree of this array tow nodes distance.  
 
 	int values[6] = {5, 6, 3, 1, 2, 4};
