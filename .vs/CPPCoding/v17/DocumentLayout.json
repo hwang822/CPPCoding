@@ -1,0 +1,125 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Workarea\\CPPCoding\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BA71D966-F111-4E3E-9B6B-D434E6CF8A4C}|CPPCoding.vcxproj|C:\\Workarea\\CPPCoding\\targetver.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{BA71D966-F111-4E3E-9B6B-D434E6CF8A4C}|CPPCoding.vcxproj|solutionrelative:targetver.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA71D966-F111-4E3E-9B6B-D434E6CF8A4C}|CPPCoding.vcxproj|C:\\Workarea\\CPPCoding\\mainAmazon.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{BA71D966-F111-4E3E-9B6B-D434E6CF8A4C}|CPPCoding.vcxproj|solutionrelative:mainAmazon.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA71D966-F111-4E3E-9B6B-D434E6CF8A4C}|CPPCoding.vcxproj|C:\\Workarea\\CPPCoding\\main02_Linked_List.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{BA71D966-F111-4E3E-9B6B-D434E6CF8A4C}|CPPCoding.vcxproj|solutionrelative:main02_Linked_List.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA71D966-F111-4E3E-9B6B-D434E6CF8A4C}|CPPCoding.vcxproj|C:\\Workarea\\CPPCoding\\main01_Array_and_Strings.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{BA71D966-F111-4E3E-9B6B-D434E6CF8A4C}|CPPCoding.vcxproj|solutionrelative:main01_Array_and_Strings.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA71D966-F111-4E3E-9B6B-D434E6CF8A4C}|CPPCoding.vcxproj|C:\\Workarea\\CPPCoding\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{BA71D966-F111-4E3E-9B6B-D434E6CF8A4C}|CPPCoding.vcxproj|solutionrelative:main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA71D966-F111-4E3E-9B6B-D434E6CF8A4C}|CPPCoding.vcxproj|C:\\Workarea\\CPPCoding\\mainFacebook.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{BA71D966-F111-4E3E-9B6B-D434E6CF8A4C}|CPPCoding.vcxproj|solutionrelative:mainFacebook.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "targetver.h",
+              "DocumentMoniker": "C:\\Workarea\\CPPCoding\\targetver.h",
+              "RelativeDocumentMoniker": "targetver.h",
+              "ToolTip": "C:\\Workarea\\CPPCoding\\targetver.h",
+              "RelativeToolTip": "targetver.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-04-17T00:45:04.278Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "main01_Array_and_Strings.cpp",
+              "DocumentMoniker": "C:\\Workarea\\CPPCoding\\main01_Array_and_Strings.cpp",
+              "RelativeDocumentMoniker": "main01_Array_and_Strings.cpp",
+              "ToolTip": "C:\\Workarea\\CPPCoding\\main01_Array_and_Strings.cpp",
+              "RelativeToolTip": "main01_Array_and_Strings.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-04-16T23:01:13.785Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "mainFacebook.cpp",
+              "DocumentMoniker": "C:\\Workarea\\CPPCoding\\mainFacebook.cpp",
+              "RelativeDocumentMoniker": "mainFacebook.cpp",
+              "ToolTip": "C:\\Workarea\\CPPCoding\\mainFacebook.cpp",
+              "RelativeToolTip": "mainFacebook.cpp",
+              "ViewState": "AQIAADkEAAAAAAAAAAAawEkEAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-04-16T22:57:01.647Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "mainAmazon.cpp",
+              "DocumentMoniker": "C:\\Workarea\\CPPCoding\\mainAmazon.cpp",
+              "RelativeDocumentMoniker": "mainAmazon.cpp",
+              "ToolTip": "C:\\Workarea\\CPPCoding\\mainAmazon.cpp",
+              "RelativeToolTip": "mainAmazon.cpp",
+              "ViewState": "AQIAADQCAAAAAAAAAAAAAD0CAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-04-16T22:57:01.659Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "main02_Linked_List.cpp",
+              "DocumentMoniker": "C:\\Workarea\\CPPCoding\\main02_Linked_List.cpp",
+              "RelativeDocumentMoniker": "main02_Linked_List.cpp",
+              "ToolTip": "C:\\Workarea\\CPPCoding\\main02_Linked_List.cpp",
+              "RelativeToolTip": "main02_Linked_List.cpp",
+              "ViewState": "AQIAAF8AAAAAAAAAAAAAAF8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-04-16T22:56:32.123Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "main.cpp",
+              "DocumentMoniker": "C:\\Workarea\\CPPCoding\\main.cpp",
+              "RelativeDocumentMoniker": "main.cpp",
+              "ToolTip": "C:\\Workarea\\CPPCoding\\main.cpp",
+              "RelativeToolTip": "main.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-04-16T22:56:19.757Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
