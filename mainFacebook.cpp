@@ -1197,6 +1197,8 @@ Output :     a
 	cout <<"\n#6 {1,-1,5,-2,3} sum = 3, Max size at [1,-1, 5, -2]: \n" << msize << endl;
 
 //#7
+
+
 	cout << "\n#7 Run array 90 deg: \n";
     int mat[M][M] =
     {
@@ -1215,7 +1217,7 @@ Output :     a
     };
 
 
-    //Inplacerotatesquarematrixby90degrees(mat);
+    Inplacerotatesquarematrixby90degrees(mat);
 	
 	Inplacerotatesquarematrixby90degrees1(mat);
 

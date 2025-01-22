@@ -53,7 +53,9 @@ int main09();
 int main10();
 int main11();
 int main12();
+//int main13();
 //int mainleetcode();
 int mainFacebook();
 int mainAmazon();
+void mainOther();
 #endif // CPPCODING_H

@@ -1,9 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Workarea\\DoubleLinkedList\\",
+  "WorkspaceRootPath": "C:\\Workarea\\CPPCoding\\DoubleLinkedList\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{ABB19DB5-4887-4FDF-B8C7-511D8BDFED73}|DoubleLinkedList.vcxproj|C:\\Workarea\\DoubleLinkedList\\DoubleLinkedList.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{ABB19DB5-4887-4FDF-B8C7-511D8BDFED73}|DoubleLinkedList.vcxproj|C:\\Workarea\\CPPCoding\\DoubleLinkedList\\DoubleLinkedList.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{ABB19DB5-4887-4FDF-B8C7-511D8BDFED73}|DoubleLinkedList.vcxproj|solutionrelative:DoubleLinkedList.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
@@ -24,9 +24,9 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "DoubleLinkedList.cpp",
-              "DocumentMoniker": "C:\\Workarea\\DoubleLinkedList\\DoubleLinkedList.cpp",
+              "DocumentMoniker": "C:\\Workarea\\CPPCoding\\DoubleLinkedList\\DoubleLinkedList.cpp",
               "RelativeDocumentMoniker": "DoubleLinkedList.cpp",
-              "ToolTip": "C:\\Workarea\\DoubleLinkedList\\DoubleLinkedList.cpp",
+              "ToolTip": "C:\\Workarea\\CPPCoding\\DoubleLinkedList\\DoubleLinkedList.cpp",
               "RelativeToolTip": "DoubleLinkedList.cpp",
               "ViewState": "AQIAACEBAAAAAAAAAAAAACEBAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",

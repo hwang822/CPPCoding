@@ -496,8 +496,13 @@ int minimumDistance(int numRows, int numColumns, int **area)
  * Main Contains Menu
  */
 
+
+
+
 int mainAmazon()
 {
+
+
 	// Amazon interview teset
 	//A. find out bester devlever track for numdevelopers for [0,0] to alllocations [x, y] ...
 	int numDestinations = 3, numDeliveries = 2;
@@ -530,7 +535,7 @@ int mainAmazon()
 
 
 	int **area = new int*[4];
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < 5; i++)
 		area[i] = new int[5];
 
 	area[0] = new int[5]{ 0,0,0,1,0 };

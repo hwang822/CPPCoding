@@ -22,6 +22,9 @@ int main()
     main10();
     main11();
     main12();
+        
+    //main13();
+    mainOther();
     return 0;
 }
 

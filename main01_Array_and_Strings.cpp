@@ -9,7 +9,7 @@
 
 #include <vector>
 
-class TwoUsm {
+class TwoSum {
 public:
     vector<int> twosum(vector<int>& nums, int target) {
         vector<int> rets;
@@ -131,7 +131,7 @@ int main01(){
     vector<int> nums (myints, myints + sizeof(myints) / sizeof(int) );
 
 //    vector<int> nums = new vector<int>(){1,2,3};
-    TwoUsm tm;
+    TwoSum tm;
     //vector<int> ret1 =  tm.twosum(nums, 17);
     return 0;
 }
